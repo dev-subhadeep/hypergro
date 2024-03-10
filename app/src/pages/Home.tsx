@@ -5,6 +5,8 @@ import { useNavigate, useSearchParams } from "react-router-dom"
 import VideoCard from "../components/VideoCard"
 import Pagination from "../components/Pagination"
 import VideoCardSkeleton from "../components/VideoCardSkeleton"
+import Player from "../components/Player"
+import Header from "../components/Header"
 
 type TVideo = {
   postId: string
@@ -45,6 +47,10 @@ const Home = () => {
     }
   }
 
+  const clearVideo = () => {
+    setVideo("")
+  }
+
   useEffect(() => {
     axios
       .get(
@@ -57,39 +63,50 @@ const Home = () => {
   }, [pageNumber])
 
   return (
-    <div className="container mx-auto">
-      {loading && (
-        <div className="grid gap-2 sm:grid-cols-5">
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
-          <VideoCardSkeleton />
+    <>
+      <Header />
+
+      <div className="container mx-auto flex justify-center items-center ">
+        <div className="max-h-[90vh]">
+          <Player url={video} clearVideo={clearVideo} />
         </div>
-      )}
-      <main className="grid gap-2 sm:grid-cols-5">
-        {!loading &&
-          videos.map((v) => (
-            <VideoCard
-              key={v.postId}
-              title={v.submission.title}
-              thumbnail={v.submission.thumbnail}
-              creator={v.creator.name || "Unknown User"}
-              avatar={v.creator.pic}
+        <div>
+          {loading && (
+            <div className="grid gap-2 sm:grid-cols-5">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <VideoCardSkeleton key={i} />
+              ))}
+            </div>
+          )}
+          <main
+            className={`grid gap-2 sm:grid-cols-5 ${
+              video &&
+              "sm:grid-cols-3 max-h-[90vh] overflow-y-hidden hover:overflow-y-scroll"
+            }`}
+          >
+            {!loading &&
+              videos.map((v) => (
+                <div onClick={() => setVideo(v.submission.mediaUrl)}>
+                  <VideoCard
+                    key={v.postId}
+                    title={v.submission.title}
+                    thumbnail={v.submission.thumbnail}
+                    creator={v.creator.name || "Unknown User"}
+                    avatar={v.creator.pic}
+                  />
+                </div>
+              ))}
+          </main>
+          {!loading && (
+            <Pagination
+              pageNumber={pageNumber}
+              prevPage={prevPage}
+              nextPage={nextPage}
             />
-          ))}
-      </main>
-      <Pagination
-        pageNumber={pageNumber}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
-    </div>
+          )}
+        </div>
+      </div>
+    </>
   )
 }
 

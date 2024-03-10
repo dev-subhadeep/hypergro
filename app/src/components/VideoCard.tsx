@@ -9,7 +9,7 @@ type TVideoCard = {
 
 const VideoCard = ({ title, thumbnail, creator, avatar }: TVideoCard) => {
   return (
-    <div className="flex flex-col shadow-md">
+    <div className="player flex flex-col shadow-md hover:cursor-pointer">
       <div className="sm:max-w-[320px]">
         <img src={thumbnail} alt={title} className="w-full" />
       </div>
