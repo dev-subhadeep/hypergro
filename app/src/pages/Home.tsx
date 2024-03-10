@@ -29,7 +29,8 @@ const Home = () => {
   )
   const [loading, setLoading] = useState(true)
   const [videos, setVideos] = useState<TVideo[]>([])
-  const [video, setVideo] = useState("")
+  const [videoLink, setVideoLink] = useState("")
+  const [videoId, setVideoId] = useState("")
   const [overlayHidden, setOverlayHidden] = useState(true)
 
   const navigate = useNavigate()
@@ -48,7 +49,7 @@ const Home = () => {
   }
 
   const clearVideo = () => {
-    setVideo("")
+    setVideoLink("")
   }
 
   useEffect(() => {
@@ -68,7 +69,7 @@ const Home = () => {
 
       <div className="container mx-auto flex justify-center items-center ">
         <div className="max-h-[90vh]">
-          <Player url={video} clearVideo={clearVideo} />
+          <Player id={videoId} url={videoLink} clearVideo={clearVideo} />
         </div>
         <div>
           {loading && (
@@ -79,14 +80,19 @@ const Home = () => {
             </div>
           )}
           <main
-            className={`grid gap-2 sm:grid-cols-5 ${
-              video &&
+            className={`grid gap-2 py-4 sm:grid-cols-5 ${
+              videoLink &&
               "sm:grid-cols-3 max-h-[90vh] overflow-y-hidden hover:overflow-y-scroll"
             }`}
           >
             {!loading &&
               videos.map((v) => (
-                <div onClick={() => setVideo(v.submission.mediaUrl)}>
+                <div
+                  onClick={() => {
+                    setVideoLink(v.submission.mediaUrl)
+                    setVideoId(v.postId)
+                  }}
+                >
                   <VideoCard
                     key={v.postId}
                     title={v.submission.title}
