@@ -7,6 +7,7 @@ import Pagination from "../components/Pagination"
 import VideoCardSkeleton from "../components/VideoCardSkeleton"
 import Player from "../components/Player"
 import Header from "../components/Header"
+import { scrollToTop } from "../lib/utils"
 
 type TVideo = {
   postId: string
@@ -67,28 +68,30 @@ const Home = () => {
     <>
       <Header />
 
-      <div className="container mx-auto flex justify-center items-center ">
-        <div className="max-h-[90vh]">
+      <div className="container mx-auto flex justify-center items-center flex-col md:flex-row sm:flex-col">
+        <div className="md:max-h-[90vh]">
           <Player id={videoId} url={videoLink} clearVideo={clearVideo} />
         </div>
         <div>
           {loading && (
-            <div className="grid gap-2 sm:grid-cols-5">
+            <div className="grid gap-2 md:grid-cols-5 sm:grid-cols-3">
               {Array.from({ length: 10 }).map((_, i) => (
                 <VideoCardSkeleton key={i} />
               ))}
             </div>
           )}
           <main
-            className={`grid gap-2 py-4 sm:grid-cols-5 ${
-              videoLink &&
-              "sm:grid-cols-3 max-h-[90vh] overflow-y-hidden hover:overflow-y-scroll"
-            }`}
+            className={
+              !videoLink
+                ? `grid gap-2 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5`
+                : "grid gap-2 p-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[90vh] overflow-y-hidden hover:overflow-y-scroll"
+            }
           >
             {!loading &&
               videos.map((v) => (
                 <div
                   onClick={() => {
+                    scrollToTop()
                     setVideoLink(v.submission.mediaUrl)
                     setVideoId(v.postId)
                   }}
