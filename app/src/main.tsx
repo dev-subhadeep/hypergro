@@ -4,11 +4,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from "./App.tsx"
 import "./index.css"
 import Home from "./pages/Home.tsx"
+import Watch from "./pages/Watch.tsx"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/watch/:id",
+    element: <Watch />,
   },
 ])
 
