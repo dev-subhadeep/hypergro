@@ -35,13 +35,13 @@ const Home = () => {
   const prevPage = () => {
     if (pageNumber > 1) {
       setPageNumber((prev) => prev - 1)
-      navigate(`/?page=${pageNumber}`, { replace: true })
+      navigate(`/?page=${pageNumber - 1}`, { replace: true })
     }
   }
   const nextPage = () => {
     if (pageNumber < 11) {
       setPageNumber((prev) => prev + 1)
-      navigate(`/?page=${pageNumber}`, { replace: true })
+      navigate(`/?page=${pageNumber + 1}`, { replace: true })
     }
   }
 
