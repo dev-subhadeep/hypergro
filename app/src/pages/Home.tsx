@@ -68,8 +68,8 @@ const Home = () => {
     <>
       <Header />
 
-      <div className="container mx-auto flex justify-center items-center flex-col md:flex-row sm:flex-col">
-        <div className="md:max-h-[90vh]">
+      <div className="container pt-[60px] mx-auto flex items-start flex-col md:flex-row sm:flex-col">
+        <div className="max-h-[80vh]">
           <Player id={videoId} url={videoLink} clearVideo={clearVideo} />
         </div>
         <div>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
-    <div className="p-5 shadow-sm">
+    <div className="fixed z-10 p-5 shadow-sm w-screen bg-white">
       <Link to={"/"}>
         <div className="flex gap-2">
           <svg

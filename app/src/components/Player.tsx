@@ -12,7 +12,7 @@ const Player = ({
 }) => {
   const [likedVideos, updateLike] = useLikeCount()
   return (
-    <div className="px-10">
+    <div className="px-10 z-8">
       <ReactPlayer
         url={url}
         width="100%"
