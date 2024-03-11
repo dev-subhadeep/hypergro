@@ -6,7 +6,7 @@ type TPagination = {
 
 const Pagination = ({ pageNumber, prevPage, nextPage }: TPagination) => {
   return (
-    <div className="my-4">
+    <div className="my-4 px-4 flex justify-end items-center">
       <button
         className="shadow-sm px-4 py-2"
         onClick={prevPage}
