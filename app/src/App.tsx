@@ -1,10 +1,7 @@
-import { useState } from "react"
 import "./App.css"
 import VideoCard from "./components/VideoCard"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <VideoCard

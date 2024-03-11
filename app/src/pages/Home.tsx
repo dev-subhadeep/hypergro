@@ -1,6 +1,5 @@
 import axios from "axios"
-import React, { useEffect, useState } from "react"
-import ReactPlayer from "react-player"
+import { useEffect, useState } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import VideoCard from "../components/VideoCard"
 import Pagination from "../components/Pagination"
@@ -24,7 +23,7 @@ type TVideo = {
 }
 
 const Home = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const [pageNumber, setPageNumber] = useState(
     Number(searchParams.get("page")) || 1
   )
@@ -32,7 +31,6 @@ const Home = () => {
   const [videos, setVideos] = useState<TVideo[]>([])
   const [videoLink, setVideoLink] = useState("")
   const [videoId, setVideoId] = useState("")
-  const [overlayHidden, setOverlayHidden] = useState(true)
 
   const navigate = useNavigate()
 
