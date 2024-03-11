@@ -4,6 +4,8 @@
 
 Video Clone is a responsive web application that provides you with video content from local creators.
 
+Live link: [hypergro.vercel.app](https://hypergro.vercel.app/)
+
 ## Navigation
 
 Each page contains thumbnails of the video content. Clicking on the thumbnail will open a player to the left side or top portion of your screen based on your screen size.
