@@ -24,8 +24,22 @@ At the bottom of the player you are given two buttons:
    <summary>
     View Images
    </summary>
-   ![Homepage](./images/homepage.png)
 
+![Homepage](https://raw.githubusercontent.com/dev-subhadeep/hypergro/main/screenshots/homepage.png?token=GHSAT0AAAAAACPKR732A7IUPGLPFY2WWYNUZPOVHTQ)
+
+Homepage
+
+![Video Playback Large Screen](https://raw.githubusercontent.com/dev-subhadeep/hypergro/main/screenshots/video-playback-large-screen.png?token=GHSAT0AAAAAACPKR732DE6ZRMJ4GIBAFK5GZPOVJWA)
+
+Video Playback (Large Screen)
+
+![Mobile View With Player](https://raw.githubusercontent.com/dev-subhadeep/hypergro/main/screenshots/mobile-view.png?token=GHSAT0AAAAAACPKR73337HZX4S4ZQD3J3E6ZPOVJQQ)
+
+Mobile View With Player
+
+![Video Controls](https://raw.githubusercontent.com/dev-subhadeep/hypergro/main/screenshots/video-controls.png?token=GHSAT0AAAAAACPKR733D2IZN7M6YL6MO572ZPOVL3Q)
+
+Video Controls
 
 </details>
 
